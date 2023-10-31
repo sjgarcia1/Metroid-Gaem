@@ -46,7 +46,7 @@ public class PlayerMovements : MonoBehaviour
         {
             HandleJump();
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("leftClick");
 
@@ -56,7 +56,7 @@ public class PlayerMovements : MonoBehaviour
             Debug.Log("rightClick");
             transform.Rotate(Vector3.up * 180);
         }
-        
+
 
     }
 
