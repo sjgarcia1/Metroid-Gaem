@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (REHP == 0)
+        if (REHP <= 0)
         {
             Destroy(this.gameObject);
         }

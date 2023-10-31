@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - REnemy
+  - Extra Heath
+  - ExtraHeath
+  - Beeger Weyponz
+  - JumpPack
   layers:
   - Default
   - TransparentFX
