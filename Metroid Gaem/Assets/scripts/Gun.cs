@@ -11,6 +11,8 @@ public class Gun : MonoBehaviour
    
     void Update()
     {
+        
+
         if (Input.GetMouseButtonDown(0) && NeedMoreBoolets == true)
         {
             GameObject BooletInstance = Instantiate(BooletPrefab, transform.position, transform.rotation);
@@ -20,5 +22,14 @@ public class Gun : MonoBehaviour
         {
             GameObject BigBooletInstance = Instantiate(BigBooletPrefab, transform.position, transform.rotation);
         }
+
+        
+
+
     }
+
+
+
+
+
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerMovements : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerMovements : MonoBehaviour
 
     public int PHP = 99;
 
+    public int maxHP = 99;
+
+    public GameObject gun;
     
 
     private Rigidbody rigidbodyRef;
@@ -33,6 +37,11 @@ public class PlayerMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PHP >= maxHP)
+        {
+            PHP = maxHP;
+        }
+
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow) && stunned == false)
         {
             transform.position += Vector3.left * speed * Time.deltaTime;
@@ -82,5 +91,33 @@ public class PlayerMovements : MonoBehaviour
             SceneManager.LoadScene(1);
             Debug.Log("game ends");
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "BeegerWeyponz")
+        {
+            other.gameObject.GetComponent<BeegerWeyponz>().exists = false;
+            other.gameObject.SetActive(false);
+            gun.GetComponent<Gun>().NeedMoreBoolets = false;
+        }
+
+        if (other.gameObject.tag == "JumpPack")
+        {
+            other.gameObject.GetComponent<JumpPack>().exists = false;
+            jumpForce = 16;
+            
+        }
+
+        if (other.gameObject.tag == "ExtraHeath")
+        {
+            other.gameObject.GetComponent<ExtraHeath>().Exists = false;
+            maxHP = maxHP + 100;
+            PHP = maxHP;
+
+
+        }
+
+
     }
 }
