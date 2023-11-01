@@ -118,6 +118,12 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
+        if (other.gameObject.tag == "Heathbar")
+        {
+            PHP = PHP + 25;
+            other.gameObject.GetComponent<Heathbar>().exists = false;
+        }
+
 
     }
 }
