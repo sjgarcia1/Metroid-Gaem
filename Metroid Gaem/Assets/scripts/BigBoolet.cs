@@ -31,5 +31,14 @@ public class BigBoolet : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+
+        if (other.gameObject.tag == "BEnemy")
+        {
+            other.gameObject.GetComponent<BigEnemy>().BEHP--;
+            other.gameObject.GetComponent<BigEnemy>().BEHP--;
+            other.gameObject.GetComponent<BigEnemy>().BEHP--;
+
+            Destroy(this.gameObject);
+        }
     }
 }

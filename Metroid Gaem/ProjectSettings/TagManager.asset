@@ -13,6 +13,7 @@ TagManager:
   - Heathbar
   - GoldenDoor
   - GoldKey
+  - BEnemy
   layers:
   - Default
   - TransparentFX
