@@ -12,14 +12,17 @@ public class Boolet : MonoBehaviour
     
     void Update()
     {
+        
+
         if (goingRight)
         {
-            transform.position += Vector3.right * speed * Time.deltaTime;
+            transform.position += transform.right * speed * Time.deltaTime;
 
         }
         else
         {
-            transform.position += Vector3.left * speed * Time.deltaTime;
+            
+            transform.position += transform.right * speed * Time.deltaTime;
         }
 
         
@@ -31,6 +34,8 @@ public class Boolet : MonoBehaviour
             other.gameObject.GetComponent<Enemy>().REHP--;
             Destroy(this.gameObject);
         }
+
+
     }
 
 }

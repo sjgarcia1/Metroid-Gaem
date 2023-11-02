@@ -27,6 +27,8 @@ public class PlayerMovements : MonoBehaviour
     private Rigidbody rigidbpdyRef;
     private Vector3 startPos;
 
+    public bool ifright = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,15 +57,29 @@ public class PlayerMovements : MonoBehaviour
         {
             HandleJump();
         }
-        if (Input.GetButtonDown("Fire1"))
-        {
+        //if (Input.GetButtonDown("Fire1"))
+       // {
             Debug.Log("leftClick");
 
-        }
+       // }
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("rightClick");
             transform.Rotate(Vector3.up * 180);
+
+            if (ifright == true)
+            {
+                ifright = false;
+             
+
+            }
+            else
+            {
+                ifright = true;
+            }
+          
+
+
         }
         
 
