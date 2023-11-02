@@ -29,6 +29,8 @@ public class PlayerMovements : MonoBehaviour
 
     public bool ifright = true;
 
+    public float pos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,8 @@ public class PlayerMovements : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pos = transform.position.x;
+
         if (PHP >= maxHP)
         {
             PHP = maxHP;
