@@ -6,12 +6,13 @@ TagManager:
   tags:
   - Enemy
   - REnemy
-  - Extra Heath
   - ExtraHeath
   - Beeger Weyponz
   - JumpPack
   - BeegerWeyponz
   - Heathbar
+  - GoldenDoor
+  - GoldKey
   layers:
   - Default
   - TransparentFX
