@@ -33,6 +33,8 @@ public class PlayerMovements : MonoBehaviour
 
     public float pos;
 
+    public bool vulnerable = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -151,6 +153,19 @@ public class PlayerMovements : MonoBehaviour
             other.gameObject.GetComponent<Heathbar>().exists = false;
         }
 
+        if (other.gameObject.tag == "REnemy")
+        {
+            PHP = PHP - 15;
+            StartCoroutine(CanHurt());
+        }
 
+     
+    }
+
+    IEnumerator CanHurt()
+    {
+        vulnerable = false;
+        yield return new WaitForSeconds(5f);
+        vulnerable = true;
     }
 }
