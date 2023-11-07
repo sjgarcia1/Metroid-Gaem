@@ -22,7 +22,8 @@ public class PlayerMovements : MonoBehaviour
     public int maxHP = 99;
 
     public GameObject gun;
-    
+
+    public int goldKeysCollected = 0;
 
     private Rigidbody rigidbodyRef;
 
@@ -64,10 +65,10 @@ public class PlayerMovements : MonoBehaviour
             HandleJump();
         }
         //if (Input.GetButtonDown("Fire1"))
-       // {
-            //Debug.Log("leftClick");
+        // {
+        //Debug.Log("leftClick");
 
-       // }
+        // }
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("rightClick");
@@ -76,7 +77,7 @@ public class PlayerMovements : MonoBehaviour
             if (ifright == true)
             {
                 ifright = false;
-             
+
 
             }
             else
@@ -91,7 +92,7 @@ public class PlayerMovements : MonoBehaviour
             }
 
         }
-        
+
 
     }
 
@@ -120,7 +121,7 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "BeegerWeyponz")
         {
@@ -133,7 +134,7 @@ public class PlayerMovements : MonoBehaviour
         {
             other.gameObject.GetComponent<JumpPack>().exists = false;
             jumpForce = 16;
-            
+
         }
 
         if (other.gameObject.tag == "ExtraHeath")
@@ -151,6 +152,30 @@ public class PlayerMovements : MonoBehaviour
             other.gameObject.GetComponent<Heathbar>().exists = false;
         }
 
+        if (other.gameObject.tag == "GoldKey")
+        {
+            Debug.Log("collected with GoldKey");
+            goldKeysCollected++;
+            other.gameObject.SetActive(false);
+
+        }
+
+        if (other.gameObject.tag == "GoldDoor")
+        {
+            Debug.Log("collided with GoldDoor");
+            if (goldKeysCollected >= other.gameObject.GetComponent<GoldenDoor>().GoldKeysNeeded)
+            {
+                other.gameObject.SetActive(false);
+                goldKeysCollected -= other.gameObject.GetComponent<GoldenDoor>().GoldKeysNeeded;
+
+
+            }
+            else
+            {
+                Debug.Log("NOT ENOUGH KEYS GO FIND MORE");
+            }
+        }
 
     }
-}
+};
+
