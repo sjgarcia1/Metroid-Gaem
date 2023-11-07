@@ -11,6 +11,8 @@ public class PlayerMovements : MonoBehaviour
 
     public float jumpForce = 5;
 
+    public float deathYlevel = -7;
+
     public int Lives = 3;
 
     public bool stunned = false;
@@ -63,7 +65,7 @@ public class PlayerMovements : MonoBehaviour
         }
         //if (Input.GetButtonDown("Fire1"))
        // {
-            Debug.Log("leftClick");
+            //Debug.Log("leftClick");
 
        // }
         if (Input.GetMouseButtonDown(1))
@@ -81,8 +83,12 @@ public class PlayerMovements : MonoBehaviour
             {
                 ifright = true;
             }
-          
 
+            if (transform.position.y <= deathYlevel)
+            {
+                Respawn();
+                Debug.Log("respawn");
+            }
 
         }
         
@@ -106,9 +112,10 @@ public class PlayerMovements : MonoBehaviour
     {
         Lives--;
         transform.position = startPos;
+        Debug.Log("game ends");
         if (Lives == 0)
         {
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
             Debug.Log("game ends");
         }
     }
