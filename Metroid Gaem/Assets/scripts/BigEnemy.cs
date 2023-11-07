@@ -8,7 +8,6 @@ public class BigEnemy : MonoBehaviour
     public float speed;
     private float startingX;
     public int BEHP = 10;
-    private bool movingRight = true;
     public GameObject BarrelMan;
     public float pos;
     // Start is called before the first frame update
