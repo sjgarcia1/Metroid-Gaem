@@ -37,6 +37,8 @@ public class PlayerMovements : MonoBehaviour
 
     public float pos;
 
+    public bool vulnerable = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,6 +98,13 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
+        if (PHP <= 0)
+        {
+            Lives--;
+            Respawn();
+            PHP = maxHP;
+        }
+         
 
     }
 
@@ -114,9 +123,9 @@ public class PlayerMovements : MonoBehaviour
 
     private void Respawn()
     {
-        Lives--;
+        
         transform.position = startPos;
-        Debug.Log("game ends");
+        Debug.Log("Rip Bozo");
         if (Lives == 0)
         {
             //SceneManager.LoadScene(1);
@@ -157,10 +166,22 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "Heathbar")
+        if (other.gameObject.tag == "Heathbar" && PHP < maxHP)
         {
             PHP = PHP + 25;
             other.gameObject.GetComponent<Heathbar>().exists = false;
+        }
+
+        if (other.gameObject.tag == "REnemy" == true)
+        {
+            PHP = PHP - 15;
+            StartCoroutine(CanHurt());
+        }
+
+        if (other.gameObject.tag == "BEnemy" && vulnerable == true)
+        {
+            PHP = PHP - 35;
+            StartCoroutine(CanHurt());
         }
 
         if (other.gameObject.tag == "GoldKey")
@@ -206,6 +227,7 @@ public class PlayerMovements : MonoBehaviour
                 Debug.Log("NOT ENOUGH KEYS GO FIND MORE");
             }
         }
+
         if (other.gameObject.tag == "endDoor")
         {
             Debug.Log("collided with endDoor");
@@ -215,6 +237,19 @@ public class PlayerMovements : MonoBehaviour
                 
             }
         }
+
+
+     
+    }
+
+    
+
+    IEnumerator CanHurt()
+    {
+        vulnerable = false;
+        yield return new WaitForSeconds(5f);
+        vulnerable = true;
+
     }
 }
 
