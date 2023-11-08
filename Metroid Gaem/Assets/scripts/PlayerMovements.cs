@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -95,6 +96,13 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
+        if (PHP <= 0)
+        {
+            Lives--;
+            Respawn();
+            PHP = maxHP;
+        }
+         
 
     }
 
@@ -113,9 +121,9 @@ public class PlayerMovements : MonoBehaviour
 
     private void Respawn()
     {
-        Lives--;
+        
         transform.position = startPos;
-        Debug.Log("game ends");
+        Debug.Log("Rip Bozo");
         if (Lives == 0)
         {
             //SceneManager.LoadScene(1);
@@ -148,15 +156,21 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "Heathbar")
+        if (other.gameObject.tag == "Heathbar" && PHP < maxHP)
         {
             PHP = PHP + 25;
             other.gameObject.GetComponent<Heathbar>().exists = false;
         }
 
-        if (other.gameObject.tag == "REnemy")
+        if (other.gameObject.tag == "REnemy" == true)
         {
             PHP = PHP - 15;
+            StartCoroutine(CanHurt());
+        }
+
+        if (other.gameObject.tag == "BEnemy" && vulnerable == true)
+        {
+            PHP = PHP - 35;
             StartCoroutine(CanHurt());
         }
 
@@ -186,6 +200,8 @@ public class PlayerMovements : MonoBehaviour
 
      
     }
+
+    
 
     IEnumerator CanHurt()
     {
