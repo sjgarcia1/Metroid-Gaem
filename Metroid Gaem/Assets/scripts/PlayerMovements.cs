@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
@@ -24,6 +25,8 @@ public class PlayerMovements : MonoBehaviour
     public GameObject gun;
 
     public int goldKeysCollected = 0;
+
+    public int BeegerWeyponzCollected = 0;
 
     private Rigidbody rigidbodyRef;
 
@@ -121,6 +124,13 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
+    IEnumerator StunPlayer()
+    {
+        stunned = true;
+        yield return new WaitForSeconds(2f);
+        stunned = false;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "BeegerWeyponz")
@@ -128,6 +138,7 @@ public class PlayerMovements : MonoBehaviour
             other.gameObject.GetComponent<BeegerWeyponz>().exists = false;
             other.gameObject.SetActive(false);
             gun.GetComponent<Gun>().NeedMoreBoolets = false;
+            BeegerWeyponzCollected++;
         }
 
         if (other.gameObject.tag == "JumpPack")
@@ -160,6 +171,26 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
+        if (other.gameObject.tag == "LavaDeathFloor")
+        {
+            Respawn();
+        }
+
+        if (other.gameObject.tag == "layzer")
+        {
+            stunned = true;
+        }
+
+        if (other.gameObject.tag == "lazer")
+        {
+            StartCoroutine(StunPlayer());
+        }
+
+
+
+    }
+    private void OnCollisionEnter(Collision other)
+    {
         if (other.gameObject.tag == "GoldenDoor")
         {
             Debug.Log("collided with GoldenDoor");
@@ -175,7 +206,15 @@ public class PlayerMovements : MonoBehaviour
                 Debug.Log("NOT ENOUGH KEYS GO FIND MORE");
             }
         }
-
+        if (other.gameObject.tag == "endDoor")
+        {
+            Debug.Log("collided with endDoor");
+            if (BeegerWeyponzCollected >= other.gameObject.GetComponent<EndOfLevelDoor>().BeegerWeyponzNeeded)
+            {
+                other.gameObject.SetActive(false);
+                
+            }
+        }
     }
-};
+}
 
