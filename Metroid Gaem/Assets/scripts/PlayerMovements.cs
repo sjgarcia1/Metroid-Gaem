@@ -168,9 +168,9 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
-        if (other.gameObject.tag == "GoldDoor")
+        if (other.gameObject.tag == "GoldenDoor")
         {
-            Debug.Log("collided with GoldDoor");
+            Debug.Log("collided with GoldenDoor");
             if (goldKeysCollected >= other.gameObject.GetComponent<GoldenDoor>().GoldKeysNeeded)
             {
                 other.gameObject.SetActive(false);
