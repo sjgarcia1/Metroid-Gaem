@@ -108,6 +108,8 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
+    
+
     private void HandleJump()
     {
 
@@ -139,6 +141,8 @@ public class PlayerMovements : MonoBehaviour
         yield return new WaitForSeconds(2f);
         stunned = false;
     }
+
+   
 
     public void OnTriggerEnter(Collider other)
     {
@@ -172,11 +176,9 @@ public class PlayerMovements : MonoBehaviour
             other.gameObject.GetComponent<Heathbar>().exists = false;
         }
 
-<<<<<<< Updated upstream
-        if (other.gameObject.tag == "REnemy" == true)
-=======
+
+
         if (other.gameObject.tag == "REnemy" && vulnerable == true)
->>>>>>> Stashed changes
         {
             PHP = PHP - 15;
             StartCoroutine(CanHurt());

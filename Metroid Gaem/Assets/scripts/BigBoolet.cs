@@ -41,4 +41,12 @@ public class BigBoolet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "wall")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
