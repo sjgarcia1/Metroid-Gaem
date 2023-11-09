@@ -42,12 +42,6 @@ public class Boolet : MonoBehaviour
 
 
     }
-    public void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "wall")
-        {
-            Destroy(this.gameObject);
-        }
-    }
+   
 
 }
