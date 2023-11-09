@@ -20,7 +20,7 @@ public class Wall : MonoBehaviour
     {
         if (other.gameObject.tag == "Boolet")
         {
-            Destroy(this.gameObject);
+            Destroy(other.gameObject);
         }
  
     }
