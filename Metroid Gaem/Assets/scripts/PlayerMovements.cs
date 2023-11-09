@@ -172,11 +172,11 @@ public class PlayerMovements : MonoBehaviour
             other.gameObject.GetComponent<Heathbar>().exists = false;
         }
 
-<<<<<<< Updated upstream
-        if (other.gameObject.tag == "REnemy" == true)
-=======
+
+        
+
         if (other.gameObject.tag == "REnemy" && vulnerable == true)
->>>>>>> Stashed changes
+
         {
             PHP = PHP - 15;
             StartCoroutine(CanHurt());
