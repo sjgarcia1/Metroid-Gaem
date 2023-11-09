@@ -24,8 +24,8 @@ public class Boolet : MonoBehaviour
             
             transform.position += transform.right * speed * Time.deltaTime;
         }
+        StartCoroutine(DespawnDelay());
 
-        
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +42,11 @@ public class Boolet : MonoBehaviour
 
 
     }
-   
 
+    IEnumerator DespawnDelay()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
+
+    }
 }

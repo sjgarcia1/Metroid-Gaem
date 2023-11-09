@@ -18,7 +18,7 @@ public class BigBoolet : MonoBehaviour
         {
             transform.position += transform.right * speed * Time.deltaTime;
         }
-
+        StartCoroutine(DespawnDelay());
 
     }
     private void OnTriggerEnter(Collider other)
@@ -42,5 +42,10 @@ public class BigBoolet : MonoBehaviour
         }
     }
 
-    
+    IEnumerator DespawnDelay()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy(this.gameObject);
+
+    }
 }
