@@ -207,6 +207,11 @@ public class PlayerMovements : MonoBehaviour
             StartCoroutine(StunPlayer());
         }
 
+        if (other.gameObject.tag == "portal")
+        {
+            transform.position = other.gameObject.GetComponent<portal>().teleportPoint.transform.position;
+            startPos = transform.position;
+        }
 
 
     }
