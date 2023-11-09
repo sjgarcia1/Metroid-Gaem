@@ -26,6 +26,8 @@ public class PlayerMovements : MonoBehaviour
 
     public int goldKeysCollected = 0;
 
+    public int BeegerWeyponzCollected = 0;
+
     private Rigidbody rigidbodyRef;
 
     private Rigidbody rigidbpdyRef;
@@ -131,6 +133,13 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
+    IEnumerator StunPlayer()
+    {
+        stunned = true;
+        yield return new WaitForSeconds(2f);
+        stunned = false;
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "BeegerWeyponz")
@@ -138,6 +147,7 @@ public class PlayerMovements : MonoBehaviour
             other.gameObject.GetComponent<BeegerWeyponz>().exists = false;
             other.gameObject.SetActive(false);
             gun.GetComponent<Gun>().NeedMoreBoolets = false;
+            BeegerWeyponzCollected++;
         }
 
         if (other.gameObject.tag == "JumpPack")
@@ -186,6 +196,31 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
+        if (other.gameObject.tag == "LavaDeathFloor")
+        {
+            Respawn();
+        }
+
+        if (other.gameObject.tag == "layzer")
+        {
+            stunned = true;
+        }
+
+        if (other.gameObject.tag == "lazer")
+        {
+            StartCoroutine(StunPlayer());
+        }
+
+        if (other.gameObject.tag == "portal")
+        {
+            transform.position = other.gameObject.GetComponent<portal>().teleportPoint.transform.position;
+            startPos = transform.position;
+        }
+
+
+    }
+    private void OnCollisionEnter(Collision other)
+    {
         if (other.gameObject.tag == "GoldenDoor")
         {
             Debug.Log("collided with GoldenDoor");
@@ -202,6 +237,17 @@ public class PlayerMovements : MonoBehaviour
             }
         }
 
+        if (other.gameObject.tag == "endDoor")
+        {
+            Debug.Log("collided with endDoor");
+            if (BeegerWeyponzCollected >= other.gameObject.GetComponent<EndOfLevelDoor>().BeegerWeyponzNeeded)
+            {
+                other.gameObject.SetActive(false);
+                
+            }
+        }
+
+
      
     }
 
@@ -212,6 +258,7 @@ public class PlayerMovements : MonoBehaviour
         vulnerable = false;
         yield return new WaitForSeconds(5f);
         vulnerable = true;
+
     }
-};
+}
 

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class GoldenDoor : MonoBehaviour
 {
-   public int GoldKeysNeeded = 3;
+   public int GoldKeysNeeded = 0;
 }
