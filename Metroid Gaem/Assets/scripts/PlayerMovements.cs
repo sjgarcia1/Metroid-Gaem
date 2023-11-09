@@ -178,7 +178,14 @@ public class PlayerMovements : MonoBehaviour
 
 
 
+
+        
+
+        
+
         if (other.gameObject.tag == "REnemy" && vulnerable == true)
+
+
         {
             PHP = PHP - 15;
             StartCoroutine(CanHurt());

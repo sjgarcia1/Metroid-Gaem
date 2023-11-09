@@ -16,6 +16,8 @@ TagManager:
   - BEnemy
   - LavaDeathFloor
   - endDoor
+  - portal
+  - wall
   layers:
   - Default
   - TransparentFX
