@@ -7,6 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerMovements : MonoBehaviour
 {
+    public int totalCoins = 0;
 
     public float speed = 10;
 
@@ -172,16 +173,22 @@ public class PlayerMovements : MonoBehaviour
 
         if (other.gameObject.tag == "Heathbar" && PHP < maxHP)
         {
-            PHP = PHP + 25;
             other.gameObject.GetComponent<Heathbar>().exists = false;
+            PHP = PHP + 25;
+        }
+        
+           
+
+        if (other.gameObject.tag == "coin")
+        {
+            totalCoins++;
+            other.gameObject.SetActive(false);
         }
 
 
 
 
-        
 
-        
 
         if (other.gameObject.tag == "REnemy" && vulnerable == true)
 
@@ -215,7 +222,7 @@ public class PlayerMovements : MonoBehaviour
             stunned = true;
         }
 
-        if (other.gameObject.tag == "lazer")
+        if (other.gameObject.tag == "layzer")
         {
             StartCoroutine(StunPlayer());
         }

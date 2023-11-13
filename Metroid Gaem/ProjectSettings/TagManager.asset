@@ -18,6 +18,8 @@ TagManager:
   - endDoor
   - portal
   - wall
+  - Boolet
+  - coin
   layers:
   - Default
   - TransparentFX
