@@ -35,4 +35,13 @@ public class BigEnemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "LavaDeathFloor")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }

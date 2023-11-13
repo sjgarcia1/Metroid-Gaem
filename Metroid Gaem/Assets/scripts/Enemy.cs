@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -57,4 +58,13 @@ public class Enemy : MonoBehaviour
            
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "LavaDeathFloor")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }

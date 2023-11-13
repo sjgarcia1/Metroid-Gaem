@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text HealthText;
     public TMP_Text BigBooletText;
     public TMP_Text KeysText;
+    public TMP_Text JumpPackText;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,8 @@ public class UIManager : MonoBehaviour
         scoreText.text = "Score: " + PlayerMovements.totalScore.ToString();
         livesText.text = "Lives: " + PlayerMovements.Lives.ToString();
         HealthText.text = "Health: " + PlayerMovements.PHP.ToString();
-        BigBooletText.text = "BigBoolets: " + PlayerMovements.BigBoolets.ToString();
+        BigBooletText.text = "Big Boolets: " + PlayerMovements.BigBoolets.ToString();
         KeysText.text = "Keys: " + PlayerMovements.goldKeysCollected.ToString();
+        JumpPackText.text = "Jump Pack: " + PlayerMovements.JumpPackk.ToString();
     }
 }

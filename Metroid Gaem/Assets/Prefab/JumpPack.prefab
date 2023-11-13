@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3811300659806517031}
   m_Layer: 0
   m_Name: JumpPack
-  m_TagString: Untagged
+  m_TagString: JumpPack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

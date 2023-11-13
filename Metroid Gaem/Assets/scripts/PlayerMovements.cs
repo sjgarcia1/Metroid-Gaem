@@ -14,7 +14,7 @@ public class PlayerMovements : MonoBehaviour
 
     public float speed = 10;
 
-    public float jumpForce = 5;
+    public float jumpForce = 5f;
 
     public float deathYlevel = -7;
 
@@ -27,6 +27,8 @@ public class PlayerMovements : MonoBehaviour
     public int maxHP = 99;
 
     public bool BigBoolets = false;
+
+    public bool JumpPackk = false;
 
     public float totalScore = 0f;
 
@@ -114,7 +116,7 @@ public class PlayerMovements : MonoBehaviour
         {
             Lives--;
             Respawn();
-            PHP = maxHP;
+            
         }
 
     }
@@ -133,8 +135,11 @@ public class PlayerMovements : MonoBehaviour
 
     private void Respawn()
     {
-        
+        Lives--;
         transform.position = startPos;
+        PHP = maxHP;
+        StartCoroutine(CanHurt());
+        StartCoroutine(Blink());
         Debug.Log("Rip Bozo");
         if (Lives == 0)
         {
@@ -174,7 +179,7 @@ public class PlayerMovements : MonoBehaviour
         {
             other.gameObject.GetComponent<JumpPack>().exists = false;
             jumpForce = 16;
-
+            JumpPackk = true;
         }
 
         if (other.gameObject.tag == "ExtraHeath")
@@ -199,10 +204,6 @@ public class PlayerMovements : MonoBehaviour
             totalScore += CoinValue;
             other.gameObject.SetActive(false);
         }
-
-
-
-
 
 
         if (other.gameObject.tag == "REnemy" && vulnerable == true)
