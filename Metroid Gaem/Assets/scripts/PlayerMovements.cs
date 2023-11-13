@@ -26,6 +26,12 @@ public class PlayerMovements : MonoBehaviour
 
     public int maxHP = 99;
 
+    public bool BigBoolets = false;
+
+    public float totalScore = 0f;
+
+    public float CoinValue = 5f;
+
     public GameObject gun;
 
     public int goldKeysCollected = 0;
@@ -154,6 +160,7 @@ public class PlayerMovements : MonoBehaviour
             other.gameObject.SetActive(false);
             gun.GetComponent<Gun>().NeedMoreBoolets = false;
             BeegerWeyponzCollected++;
+            BigBoolets = true;
         }
 
         if (other.gameObject.tag == "BFG")
@@ -189,7 +196,7 @@ public class PlayerMovements : MonoBehaviour
 
         if (other.gameObject.tag == "coin")
         {
-            totalCoins++;
+            totalScore += CoinValue;
             other.gameObject.SetActive(false);
         }
 

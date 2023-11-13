@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     private float startingX;
     public int REHP = 1;
     private bool movingRight = true;
+    public float EnemyValue = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +54,7 @@ public class Enemy : MonoBehaviour
         if (REHP <= 0)
         {
             Destroy(this.gameObject);
+           
         }
     }
 }
