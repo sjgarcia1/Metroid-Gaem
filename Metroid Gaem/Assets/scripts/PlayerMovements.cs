@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,6 +41,8 @@ public class PlayerMovements : MonoBehaviour
     public float pos;
 
     public bool vulnerable = true;
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -104,12 +109,8 @@ public class PlayerMovements : MonoBehaviour
             Respawn();
             PHP = maxHP;
         }
-         
 
     }
-
-    
-
     private void HandleJump()
     {
 
@@ -154,6 +155,13 @@ public class PlayerMovements : MonoBehaviour
             BeegerWeyponzCollected++;
         }
 
+        if (other.gameObject.tag == "BFG")
+        {
+            other.gameObject.GetComponent<BFG>().exists = false;
+            other.gameObject.SetActive(false);
+            gun.GetComponent<Gun>().BFGtiem = true;
+        }
+
         if (other.gameObject.tag == "JumpPack")
         {
             other.gameObject.GetComponent<JumpPack>().exists = false;
@@ -189,12 +197,14 @@ public class PlayerMovements : MonoBehaviour
         {
             PHP = PHP - 15;
             StartCoroutine(CanHurt());
+            StartCoroutine(Blink());
         }
 
         if (other.gameObject.tag == "BEnemy" && vulnerable == true)
         {
             PHP = PHP - 35;
             StartCoroutine(CanHurt());
+            StartCoroutine(Blink());
         }
 
         if (other.gameObject.tag == "GoldKey")
@@ -269,5 +279,24 @@ public class PlayerMovements : MonoBehaviour
         vulnerable = true;
 
     }
+
+    IEnumerator Blink()
+    {
+        for (int index = 0; index < 52; index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+        GetComponent<MeshRenderer>().enabled = true;
+    }
+
+ 
 }
 

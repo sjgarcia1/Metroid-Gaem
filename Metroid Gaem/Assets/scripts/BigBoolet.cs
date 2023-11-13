@@ -7,6 +7,11 @@ public class BigBoolet : MonoBehaviour
     public float speed;
     public bool goingRight;
 
+    void Start()
+    {
+        StartCoroutine(DespawnDelay());
+    }
+
     void Update()
     {
         if (goingRight)

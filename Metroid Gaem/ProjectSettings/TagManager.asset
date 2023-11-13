@@ -18,6 +18,9 @@ TagManager:
   - endDoor
   - portal
   - wall
+  - Boolet
+  - GigaBoolet
+  - BFG
   layers:
   - Default
   - TransparentFX
