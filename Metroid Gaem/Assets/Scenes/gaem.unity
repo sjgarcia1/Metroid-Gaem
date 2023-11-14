@@ -5521,6 +5521,10 @@ PrefabInstance:
       value: wall (9)
       objectReference: {fileID: 0}
     - target: {fileID: 8283475352861720853, guid: 4282e4d45f1a01542b2e2ff36163d977, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3729
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283475352861720853, guid: 4282e4d45f1a01542b2e2ff36163d977, type: 3}
       propertyPath: m_LocalScale.y
       value: 1.4662288
       objectReference: {fileID: 0}
