@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public PlayerMovements PlayerMovements;
+    
 
     public TMP_Text scoreText;
     public TMP_Text livesText;
@@ -24,7 +25,7 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         //sets the text screen as (Score: ) + total score
-        scoreText.text = "Score: " + PlayerMovements.totalScore.ToString();
+        scoreText.text = "Score: " + PlayerMovements. totalScore.ToString();
         livesText.text = "Lives: " + PlayerMovements.Lives.ToString();
         HealthText.text = "Health: " + PlayerMovements.PHP.ToString();
         BigBooletText.text = "Big Boolets: " + PlayerMovements.BigBoolets.ToString();

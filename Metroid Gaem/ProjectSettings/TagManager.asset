@@ -21,6 +21,9 @@ TagManager:
   - Boolet
   - GigaBoolet
   - BFG
+  - coin
+  - bucketMan
+  - LastPortal
   layers:
   - Default
   - TransparentFX

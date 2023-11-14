@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3921161301632250749}
   - component: {fileID: 2967948718474531963}
   - component: {fileID: -791602400706308641}
+  - component: {fileID: -3994105229978930184}
   m_Layer: 0
   m_Name: Heathbar
   m_TagString: Heathbar
@@ -28,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7047791510266613909}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0.5, w: 0.7071068}
   m_LocalPosition: {x: 11.97, y: 0.16, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 45, z: 90}
 --- !u!33 &9195662458199824662
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -119,3 +120,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exists: 1
+--- !u!114 &-3994105229978930184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047791510266613909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb148c6f5224c64ea4754ffe0d4b26a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spinSpeed: 50
+  spinDerection: {x: 2, y: 2, z: 2}

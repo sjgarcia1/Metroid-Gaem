@@ -45,6 +45,15 @@ public class BigBoolet : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+
+        if (other.gameObject.tag == "bucketMan")
+        {
+            other.gameObject.GetComponent<BucketMan>().BucketHP--;
+            other.gameObject.GetComponent<BucketMan>().BucketHP--;
+            other.gameObject.GetComponent<BucketMan>().BucketHP--;
+
+            Destroy(this.gameObject);
+        }
     }
 
     IEnumerator DespawnDelay()

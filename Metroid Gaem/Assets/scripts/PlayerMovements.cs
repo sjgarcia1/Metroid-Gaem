@@ -143,7 +143,7 @@ public class PlayerMovements : MonoBehaviour
         Debug.Log("Rip Bozo");
         if (Lives == 0)
         {
-            //SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             Debug.Log("game ends");
         }
     }
@@ -177,8 +177,8 @@ public class PlayerMovements : MonoBehaviour
 
         if (other.gameObject.tag == "JumpPack")
         {
-            other.gameObject.GetComponent<JumpPack>().exists = false;
-            jumpForce = 16;
+            other.GetComponent<JumpPack>().exists = false;
+            jumpForce = 12;
             JumpPackk = true;
         }
 
@@ -222,6 +222,13 @@ public class PlayerMovements : MonoBehaviour
             StartCoroutine(Blink());
         }
 
+        if (other.gameObject.tag == "bucketMan" && vulnerable == true)
+        {
+            PHP = PHP - 35;
+            StartCoroutine(CanHurt());
+            StartCoroutine(Blink());
+        }
+
         if (other.gameObject.tag == "GoldKey")
         {
             Debug.Log("collected with GoldKey");
@@ -251,6 +258,10 @@ public class PlayerMovements : MonoBehaviour
             startPos = transform.position;
         }
 
+        if (other.gameObject.tag == "LastPortal")
+        {
+            SceneManager.LoadScene(2);
+        }
 
     }
     private void OnCollisionEnter(Collision other)
