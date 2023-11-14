@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     private float startingX;
     public int REHP = 1;
     private bool movingRight = true;
+    public float EnemyValue = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,16 @@ public class Enemy : MonoBehaviour
         if (REHP <= 0)
         {
             Destroy(this.gameObject);
+           
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "LavaDeathFloor")
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
 }
